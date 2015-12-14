@@ -15,13 +15,22 @@
 </head>
 
 <body>
-<div ng-repeat="person in personlist">
    
-    <a href="/userprofile/{{ person._id }}">{{ person.local.userName }}</a>
-   <button ng-click="addFriend(person._id)">Add Friend</button>
+    <jumbotron>
+    <h1 style="margin-left: 20px"class="text center">Make New Friends</h1>
+         <h4 style="margin-left: 20px"><a href="/profile">Profile</a></h4>
+    </jumbotron>
+    <div class="row">
+        <div class="col-md-4">
+<div ng-repeat="person in personlist" class="well">
+   
+    <a href="/userprofile/{{ person._id }}">{{ person.local.userName }}</a><br/>
+   <button ng-click="addFriend(person._id)" class="btn btn-success">Add Friend</button>
    
 </div>
-    <h4><a href="/profile">Profile</a></h4>
+            </div>
+        </div>
+    
 </body>
 	<script>
 		var app = angular.module('findUsers',[]);
