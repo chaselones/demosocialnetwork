@@ -15,19 +15,37 @@
 </head>
 
 <body>
-    <h4 style="margin-left: 20px;"><a href="/profile">Profile</a></h4>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">User Information</a>
+                <a class="navbar-brand" href="/profile">Profile</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+
+        <li>            <a href="/logout" class="btn btn-danger btn-sm">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
     <div class="row">
         
         <div class="col-md-4">
             <div class="well">
             <div>
-                <%= model.local.userName %>
+                <b><u><%= model.local.userName %></u></b>
                     <br/>
-                    <%= model.local.gender %>
+                    Gender: <%= model.local.gender %>
                         <br/>
-                        <%= model.local.age %>
+                        Age: <%= model.local.age %>
                             <br/>
-                            <%= model.local.usertype %>
+                            Usertype: <%= model.local.usertype %>
                                 
             </div>
             </div>

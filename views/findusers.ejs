@@ -15,11 +15,25 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Friend Finder</a>
+                <a class="navbar-brand" href="/profile">Profile</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+
+
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+
+        <li>            <a href="/logout" class="btn btn-danger btn-sm">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
    
-    <jumbotron>
-    <h1 style="margin-left: 20px"class="text center">Make New Friends</h1>
-         <h4 style="margin-left: 20px"><a href="/profile">Profile</a></h4>
-    </jumbotron>
     <div class="row">
         <div class="col-md-4">
 <div ng-repeat="person in personlist" class="well">
