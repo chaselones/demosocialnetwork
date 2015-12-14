@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="findUsers" ng-controller="findUsersCtrl">
+
+<head>
+    <title>Social Network - Find friends</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <script src="angular/angular.min.js"></script>
+    <style>
+        body {
+            padding-top: 80px;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+
+<body>
+<div ng-repeat="person in personlist">
+   
+    <a href="/userprofile/{{ person._id }}">{{ person.local.userName }}</a>
+   <button ng-click="addFriend(person._id)">Add Friend</button>
+   
+</div>
+    <h4><a href="/profile">Profile</a></h4>
+</body>
+	<script>
+		var app = angular.module('findUsers',[]);
+		app.controller('findUsersCtrl',['$scope','$http',function($scope,$http){
+			$http.get('findusers').then(function(res){
+      $scope.personlist = res.data;
+      });
+			$scope.addFriend = function(friendid){
+                    $http.post('addfriend', {
+                        id: friendid
+                    }).then(function(res){
+//                        console.log("added friend");
+
+                    });
+                };
+
+		}]);
+	</script>
+</html>

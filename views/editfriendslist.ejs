@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="findFriends" ng-controller="findFriendsCtrl">
+
+<head>
+    <title>Social Network - Find friends</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <script src="angular/angular.min.js"></script>
+    <style>
+        body {
+            padding-top: 80px;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+
+<body>
+<div ng-repeat="person in personlist">
+   {{ person.local.userName }}
+   <button ng-click="removeFriend(person._id)">Remove Friend</button>
+    
+</div>
+    <h4><a href="/profile">Profile</a></h4>
+</body>
+	<script>
+		var app = angular.module('findFriends',[]);
+		app.controller('findFriendsCtrl',['$scope','$http',function($scope,$http){
+			$http.get('findfriends').then(function(res){
+      $scope.personlist = res.data;
+      });
+
+                $scope.removeFriend = function(friendid){
+                    $http.post('removefriend', {
+                        friendID: friendid
+                    }).then(function(res){
+                        console.log("removed friend");
+                        $http.get('findfriends').then(function(res){
+                           $scope.personlist =  res.data; 
+                        });
+                    }, function(err){
+                        console.log(err);
+                    });
+                };
+		}]);
+	</script>
+</html>
