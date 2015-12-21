@@ -3,26 +3,30 @@
 
 <head>
     <title>Social Network</title>
- 
+
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <script src="angular/angular.min.js"></script>
-        <script>
-    
-       
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-  ga('create', 'UA-71657016-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
+        ga('create', 'UA-71657016-1', 'auto');
+        ga('send', 'pageview');
+    </script>
     <style>
-/*
+        /*
         body {
             padding-top: 80px;
             word-wrap: break-word;
@@ -36,138 +40,139 @@
 </head>
 
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Profile Page</a>
-        <a class="navbar-brand" href="/editprofile">Edit Profile</a>
-    </div>
-    <div>
-      <ul class="nav navbar-nav">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Profile Page</a>
+                <a class="navbar-brand" href="/editprofile">Edit Profile</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
 
 
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
 
-        <li>            <a href="/logout" class="btn btn-danger btn-sm">Logout</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-        <div class="text-center" style="margin-top: 30px;">
-
+                    <li> <a href="/logout" class="btn btn-danger btn-sm">Logout</a></li>
+                </ul>
+            </div>
         </div>
+    </nav>
+    <div class="text-center" style="margin-top: 30px;">
 
-        <div class="row">
+    </div>
 
-            <!-- LOCAL INFORMATION -->
-            <div class="col-sm-3">
-                <div class="well">
+    <div class="row">
 
-                    <% if (user.local.email) { %>
-                        <p>
+        <!-- LOCAL INFORMATION -->
+        <div class="col-sm-3">
+            <div class="well">
 
-                            <h3><span class="fa fa-user"></span>Hello <%= user.local.userName.toUpperCase() %></h3>
-                            <br/>
-                            <!--                <strong>id</strong>: <%= user._id %><br>-->
-									<h4>Details:</h4>
-                            <strong>age</strong>:
-                            <%= user.local.age %>
+                <% if (user.local.email) { %>
+                    <p>
+
+                        <h3><span class="fa fa-user"></span>Hello <%= user.local.userName.toUpperCase() %></h3>
+                        <br/>
+                        <!--                <strong>id</strong>: <%= user._id %><br>-->
+                        <h4>Details:</h4>
+                        <strong>age</strong>:
+                        <%= user.local.age %>
+                            <br>
+                            <strong>gender</strong>:
+                            <%= user.local.gender %>
                                 <br>
-                                <strong>gender</strong>:
-                                <%= user.local.gender %>
+                                <strong>usertype</strong>:
+                                <%= user.local.usertype %>
                                     <br>
-                                    <strong>usertype</strong>:
-                                    <%= user.local.usertype %>
-                                        <br>
-<h4>Friends:</h4>
-<div ng-repeat="person in personlist">
-   {{ person.local.userName }}
-</div>
-<br>
-<h4><a href="/viewusers">Find Users</a></h4>
-<h4><a href="/editfriendslist">Edit Friends List</a></h4>
-                                        <!--
+                                    <h4>Friends:</h4>
+                                    <div ng-repeat="person in personlist">
+                                        {{ person.local.userName }}
+                                    </div>
+                                    <br>
+                                    <h4><a href="/viewusers">Find Users</a></h4>
+                                    <h4><a href="/editfriendslist">Edit Friends List</a></h4>
+                                    <!--
                         <strong>email</strong>: <%= user.local.email %><br>
                         <strong>password</strong>: <%= user.local.password %>
 -->
-                        </p>
+                    </p>
 
-                        <% } else { %>
-                            <a href="/connect/local" class="btn btn-default">Connect Local</a>
-<% } %>
+                    <% } else { %>
+                        <a href="/connect/local" class="btn btn-default">Connect Local</a>
+                        <% } %>
 
-                </div>
-					
-                
             </div>
-						
-<div class="col-sm-4">
-      <div class="well">
-        <h4>Tasks/Goals:</h4>
+
+
+        </div>
+
+        <div class="col-sm-4">
+            <div class="well">
+                <h4>Tasks/Goals:</h4>
                 <div id="wall">
 
                     <input type="text" ng-model="user.postmsg" />
                     <button ng-click="postToWall()" class="btn btn-success">Post</button>
                     <div ng-repeat="post in walls">
-           <h4>{{post.user}}:</h4> <h5>{{ post.msg }}</h5>
+                        <h4>{{post.user}}:</h4>
+                        <h5>{{ post.msg }}</h5>
                         <button ng-click="deletePost(post._id)" class="btn btn-danger">Complete</button>
                     </div>
                 </div>
-      </div>
-   </div>
-			
-			<div class="col-sm-5">
-						<div class="well">
-							<iframe src="http://socketchatcc.herokuapp.com/"style="height: 540px;"></iframe>
-						</div>
-					</div>
-
+            </div>
         </div>
-        <script>
-            var app = angular.module('profile', []);
-            app.controller('profileCtrl', ['$scope', '$http', function($scope, $http){
-                $scope.user = {};
-                $scope.walls = [];
-                $http.get('getwallposts').then(function(res){
-                   $scope.walls = res.data; 
-                });
-                $http.get('findfriends').then(function(res){
-                    $scope.personlist = res.data;
-                });
 
-                $scope.postToWall = function(){
-                    $http.post('posttowall', {
-                        msg: $scope.user.postmsg
-                    }).then(function(res){
-                                 console.log("posted to wall"); 
-                        
-                        $http.get('getwallposts').then(function(res){
-                            
-                            $scope.walls = res.data;
-                        });
-                    }, function(err){
-                        console.log(err);
+        <div class="col-sm-5">
+            <div class="well">
+                <iframe src="http://socketchatcc.herokuapp.com/" style="height: 540px;"></iframe>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        var app = angular.module('profile', []);
+        app.controller('profileCtrl', ['$scope', '$http', function ($scope, $http) {
+            $scope.user = {};
+            $scope.walls = [];
+            $http.get('getwallposts').then(function (res) {
+                $scope.walls = res.data;
+            });
+            $http.get('findfriends').then(function (res) {
+                $scope.personlist = res.data;
+            });
+
+            $scope.postToWall = function () {
+                $http.post('posttowall', {
+                    msg: $scope.user.postmsg
+                }).then(function (res) {
+                    console.log("posted to wall");
+
+                    $http.get('getwallposts').then(function (res) {
+
+                        $scope.walls = res.data;
                     });
-                };
-                
-                $scope.deletePost = function(id){
-                    $http.post('deletepost', {
-                        //id names it, takes the id of the assigned value, to delete
-                        id: id
-                    }).then(function(res){
-                                 console.log("deleted from wall"); 
-                        
-                        $http.get('getwallposts').then(function(res){
-                            
-                            $scope.walls = res.data;
-                        });
-                    }, function(err){
-                        console.log(err);
+                }, function (err) {
+                    console.log(err);
+                });
+            };
+
+            $scope.deletePost = function (id) {
+                $http.post('deletepost', {
+                    //id names it, takes the id of the assigned value, to delete
+                    id: id
+                }).then(function (res) {
+                    console.log("deleted from wall");
+
+                    $http.get('getwallposts').then(function (res) {
+
+                        $scope.walls = res.data;
                     });
-                };
+                }, function (err) {
+                    console.log(err);
+                });
+            };
 }]);
-        </script>
+    </script>
 </body>
 
 </html>
